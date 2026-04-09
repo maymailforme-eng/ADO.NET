@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using System.Data.SqlClient;
 
-namespace PV_522_ADO
+namespace DBTools
 {
-    class Connector
+    public class Connector
     {
         SqlConnection connection;
         public Connector(string connection_string)
@@ -134,7 +135,7 @@ namespace PV_522_ADO
                     Console.WriteLine("Такой фильм уже есть в базе.");
                     connection.Close();
                     return;
-                }    
+                }
 
             }
 
@@ -161,8 +162,10 @@ namespace PV_522_ADO
 
 
 
-        public void Select(string cmd)
+        public DataTable Select(string cmd)
         {
+            DataTable table = new DataTable();
+
             SqlCommand command = new SqlCommand(cmd, connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
@@ -183,10 +186,18 @@ namespace PV_522_ADO
                 }
             }
             reader.Close();
+
+
+
             //Заново выполняем запрос, и выводим результаты запроса:
             reader = command.ExecuteReader();
+
+
+
             for (int i = 0; i < reader.FieldCount; i++)
             {
+                table.Columns.Add(reader.GetName(i));
+
                 Console.Write($"{reader.GetName(i).PadRight(string_sizes[i])}");
                 //if (reader.GetName(i).ToString().Length > string_sizes[i]) string_sizes[i] = reader.GetName(i).ToString().Length + 1;
             }
@@ -194,14 +205,32 @@ namespace PV_522_ADO
             for (int i = 0; i < string_sizes.Sum(); i++) Console.Write("-"); Console.WriteLine();
             while (reader.Read())
             {
+
+                DataRow row = table.NewRow();
                 //Console.WriteLine($"{reader[0]}\t{reader[1]}\t{reader[2]}");
                 for (int i = 0; i < reader.FieldCount; i++)
+                {
                     Console.Write(reader[i].ToString().PadRight(string_sizes[i]));
+                    row[i] = reader[i];
+  
+                }
                 Console.WriteLine();
+
+                table.Rows.Add(row);
+
             }
+
+
             reader.Close();
             connection.Close();
+
+            return table;
         }
+
+
+
+
+
         public void Select(string fields, string tables, string condition = "")
         {
             string cmd = $"SELECT {fields} FROM {tables} ";
@@ -217,5 +246,59 @@ namespace PV_522_ADO
             connection.Close();
             return value;
         }
+
+
+
+
+        /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////\
+        ///  секция UPDATE
+        /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////\
+
+
+        public void Update(string cmd)
+        {
+            SqlCommand command = new SqlCommand(cmd, connection);
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+        public void Update(string table, string fields, string values, string condition)
+        {
+            string[] s_fields = fields.Split(',');
+            string[] s_values = values.Split(',');
+            if (s_fields.Length != s_values.Length) return;
+            string parsed = " ";
+            for (int i = 0; i < s_fields.Length; i++)
+            {
+                parsed += $"{s_fields[i]}={ParseValue(s_values[i])}";
+                if (i != s_values.Length - 1) parsed += ",";
+            }
+            string cmd = $"UPDATE {table} SET {parsed} WHERE {condition}";
+            Update(cmd);
+        }
+        string ParseValue(string value)
+        {
+            if (value.Length > 1)
+            {
+                if (value[0] != 'N' && value[1] != '\'') value = $"N'{value}'";
+                /*
+				-------------------------
+				\ (Backslash) - символ отмены специального значения другого символа.
+				-------------------------
+				*/
+            }
+            return value;
+        }
+
+
+
+
+
+
     }
+
+
+
+
 }
+
