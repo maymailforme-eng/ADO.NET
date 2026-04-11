@@ -103,5 +103,12 @@ namespace Academy
             );
             toolStripStatusLabel.Text = $"Количество записей: {dgvStudents.RowCount - 1}";
         }
+
+        //кнопка добавить
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            StudentForm student = new StudentForm();
+            student.ShowDialog();
+        }
     }
 }

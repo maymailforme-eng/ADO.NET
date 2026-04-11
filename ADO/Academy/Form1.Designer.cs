@@ -32,6 +32,7 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPageStudents = new System.Windows.Forms.TabPage();
+            this.cbStudentDirection = new System.Windows.Forms.ComboBox();
             this.cbStudents = new System.Windows.Forms.ComboBox();
             this.dgvStudents = new System.Windows.Forms.DataGridView();
             this.tabPageGroups = new System.Windows.Forms.TabPage();
@@ -43,7 +44,7 @@
             this.dgvDisciplines = new System.Windows.Forms.DataGridView();
             this.tabPageTeachers = new System.Windows.Forms.TabPage();
             this.dgvTeachers = new System.Windows.Forms.DataGridView();
-            this.cbStudentDirection = new System.Windows.Forms.ComboBox();
+            this.buttonAdd = new System.Windows.Forms.Button();
             this.statusStrip.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPageStudents.SuspendLayout();
@@ -94,6 +95,7 @@
             // 
             // tabPageStudents
             // 
+            this.tabPageStudents.Controls.Add(this.buttonAdd);
             this.tabPageStudents.Controls.Add(this.cbStudentDirection);
             this.tabPageStudents.Controls.Add(this.cbStudents);
             this.tabPageStudents.Controls.Add(this.dgvStudents);
@@ -105,6 +107,15 @@
             this.tabPageStudents.TabIndex = 0;
             this.tabPageStudents.Text = "Students";
             this.tabPageStudents.UseVisualStyleBackColor = true;
+            // 
+            // cbStudentDirection
+            // 
+            this.cbStudentDirection.FormattingEnabled = true;
+            this.cbStudentDirection.Location = new System.Drawing.Point(357, 8);
+            this.cbStudentDirection.Name = "cbStudentDirection";
+            this.cbStudentDirection.Size = new System.Drawing.Size(317, 28);
+            this.cbStudentDirection.TabIndex = 3;
+            this.cbStudentDirection.SelectionChangeCommitted += new System.EventHandler(this.cbStudentDirection_SelectionChangeCommitted);
             // 
             // cbStudents
             // 
@@ -123,11 +134,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStudents.Location = new System.Drawing.Point(0, 38);
+            this.dgvStudents.Location = new System.Drawing.Point(0, 44);
             this.dgvStudents.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvStudents.Name = "dgvStudents";
             this.dgvStudents.RowHeadersWidth = 62;
-            this.dgvStudents.Size = new System.Drawing.Size(1026, 454);
+            this.dgvStudents.Size = new System.Drawing.Size(1026, 448);
             this.dgvStudents.TabIndex = 1;
             // 
             // tabPageGroups
@@ -246,14 +257,16 @@
             this.dgvTeachers.Size = new System.Drawing.Size(1026, 454);
             this.dgvTeachers.TabIndex = 2;
             // 
-            // cbStudentDirection
+            // buttonAdd
             // 
-            this.cbStudentDirection.FormattingEnabled = true;
-            this.cbStudentDirection.Location = new System.Drawing.Point(357, 8);
-            this.cbStudentDirection.Name = "cbStudentDirection";
-            this.cbStudentDirection.Size = new System.Drawing.Size(317, 28);
-            this.cbStudentDirection.TabIndex = 3;
-            this.cbStudentDirection.SelectionChangeCommitted += new System.EventHandler(this.cbStudentDirection_SelectionChangeCommitted);
+            this.buttonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonAdd.Location = new System.Drawing.Point(879, 3);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(147, 42);
+            this.buttonAdd.TabIndex = 4;
+            this.buttonAdd.Text = "Добавить";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // MainForm
             // 
@@ -301,5 +314,6 @@
         private System.Windows.Forms.ComboBox cbGroupsDirection;
         private System.Windows.Forms.ComboBox cbStudents;
         private System.Windows.Forms.ComboBox cbStudentDirection;
+        private System.Windows.Forms.Button buttonAdd;
     }
 }
