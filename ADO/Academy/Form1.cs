@@ -33,6 +33,16 @@ namespace Academy
             dgvDisciplines.DataSource = connector.Select("SELECT * FROM Disciplines");
             dgvTeachers.DataSource = connector.Select("SELECT * FROM Teachers");
 
+
+            //cbGroupsDirection.DataSource = connector.Load
+
+
+        }
+
+        //заглушка 
+        private void cbGroupsDirection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
