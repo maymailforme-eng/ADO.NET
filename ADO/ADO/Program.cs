@@ -30,11 +30,11 @@ namespace PV_522_ADO
 
 
 
-            //вставка в Directors
-            connector.InsertDirector("Quentin", "Tarantino");
+            ////вставка в Directors
+            //connector.InsertDirector("Quentin", "Tarantino");
 
-            //вставка в Movies
-            connector.InsertMovie("Pulp Fiction", "1994", "Quentin", "Tarantino");
+            ////вставка в Movies
+            //connector.InsertMovie("Pulp Fiction", "1994", "Quentin", "Tarantino");
 
 
 

@@ -12,10 +12,37 @@ namespace Academy
 {
     public partial class HumanForm : Form
     {
+        
+        internal Models.Human human;
+
         public HumanForm()
         {
             InitializeComponent();
         }
+
+        protected virtual void Compress()
+        {
+            human = new Models.Human
+                (
+                    Convert.ToInt32(labelID.Text == "" ? "0" : labelID.Text.Split(':').Last()),
+                    textBoxLastName.Text,
+                    textBoxFirstName.Text,
+                    textBoxMidleName.Text,
+                    dtpBirthDate.Value.ToString("yyyy-MM-dd"),
+                    textBoxEmail.Text,
+                    textBoxPhone.Text,
+                    pictureBoxPhoto.Image
+                );
+        }
+
+
+        //обработчик клика по ОК
+        protected virtual void buttonОК_Click(object sender, EventArgs e)
+        {
+            Compress();
+        }
+
+
 
         private void HumanForm_Load(object sender, EventArgs e)
         {
@@ -31,5 +58,7 @@ namespace Academy
         {
 
         }
+
+
     }
 }
