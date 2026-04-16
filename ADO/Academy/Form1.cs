@@ -73,6 +73,12 @@ namespace Academy
             toolStripStatusLabel.Text = $"Количество записей: {tables[i].RowCount - 1}";
         }
 
+        //обновление визуала текущей вкладки tabControl после внесения изменений
+        public void UpdateVisualCuerrentTab()
+        {
+            tabControl_SelectedIndexChanged(tabControl, EventArgs.Empty);
+        }
+
         //событие смены фильтра во вкладке
         private void cbGroupsDirection_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -108,7 +114,47 @@ namespace Academy
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             StudentForm student = new StudentForm();
+            //назначаем родителя
+            student.Owner = this;
             student.ShowDialog();
         }
+
+        ////обработчик клика по ячейе в таблице студентов
+        private void dgvStudents_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                dgvStudents.ClearSelection();
+                dgvStudents.Rows[e.RowIndex].Selected = true;
+            }
+        }
+
+        //двойной клик по ячейке таблицы студента
+        private void dgvStudents_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int indexRow = e.RowIndex;
+            DataGridViewRow row = dgvStudents.Rows[indexRow];
+
+            StudentForm student = new StudentForm
+                (
+                    row.Cells["last_name"].Value.ToString(),
+                    row.Cells["first_name"].Value.ToString(),
+                    row.Cells["middle_name"].Value.ToString(),
+                    row.Cells["birth_date"].Value.ToString(),
+                    row.Cells["group_name"].Value.ToString()
+
+
+
+                );
+            //назначаем родителя
+            student.Owner = this;
+            student.ShowDialog();
+        }
+
+
+        //private void dgvGroups_CellClick(object sender, DataGridViewCellEventArgs e)
+        //{
+
+        //}
     }
 }

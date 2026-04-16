@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +22,35 @@ namespace Academy
         {
             InitializeComponent();
         }
+
+
+        public HumanForm
+            (string lastName, string firstName, string middleName, 
+            string birth_date)
+        {
+            InitializeComponent();
+
+            //заполнение боксов
+            textBoxLastName.Text = lastName;
+            textBoxFirstName.Text = firstName;  
+            textBoxMidleName.Text = middleName;
+            textBoxEmail.Text = "email";
+            textBoxPhone.Text = "phone";
+
+            //преобразование строки в DateTime
+            DateTime dt;
+            if (DateTime.TryParse(birth_date, out dt))
+            {
+                dtpBirthDate.Value = dt;
+            }
+            else
+            {
+                MessageBox.Show("Неверный формат даты");
+            }
+
+
+        }
+
 
         protected virtual void Compress()
         {
@@ -58,6 +90,35 @@ namespace Academy
         {
 
         }
+
+        //клик по кнопке добавить 
+        private void buttonBrowse_MouseClick(object sender, MouseEventArgs e)
+        {
+            using (OpenFileDialog dialog = new OpenFileDialog()) //дополнительное высвобождение
+            {
+                dialog.Title = "Выберите фото";
+                dialog.Filter = "Изображения (*.jpg;*.png)|*.jpg;*.png";
+
+
+                dialog.Multiselect = false; // можно выбрать только один файл
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    //переносим в кодировку байтами 
+                    byte[] bytes = File.ReadAllBytes(dialog.FileName);
+
+                    //выделяем поток обертку над байтами (не заблокирует изображение на компьютере)
+                    using (MemoryStream ms = new MemoryStream(bytes))
+                    {
+                        Image img = Image.FromStream(ms);
+                        pictureBoxPhoto.Image = img;
+                    }
+                }
+            }
+        }
+
+
+
 
 
     }
