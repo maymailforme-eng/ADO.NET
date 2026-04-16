@@ -36,6 +36,18 @@ namespace Academy
         }
 
 
+        protected virtual void Extract()
+        {
+            labelID.Text = $"ID:{human.id}";
+            textBoxLastName.Text = human.last_name;
+            textBoxFirstName.Text = human.first_name;
+            textBoxMidleName.Text = human.middle_name;
+            dtpBirthDate.Value = Convert.ToDateTime(human.birth_date);
+            textBoxEmail.Text = human.email;
+            textBoxPhone.Text = human.phone;
+        }
+
+
         //обработчик клика по ОК
         protected virtual void buttonОК_Click(object sender, EventArgs e)
         {

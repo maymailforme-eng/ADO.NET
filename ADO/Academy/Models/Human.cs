@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Security.AccessControl;
 
 namespace Academy.Models
 {
@@ -39,6 +40,19 @@ namespace Academy.Models
             this.photo = photo;
         }
 
+        public Human(object[] values)
+        { 
+            id = Convert.ToInt32 (values[0]);
+            last_name = values[1].ToString();
+            first_name = values[2].ToString();
+            middle_name = values[3].ToString();
+            birth_date = values[4].ToString();
+            email = values[5].ToString();
+            phone = values[6].ToString();
+
+        }
+
+
         public Human(Human other) //конструтор копирования
         {
             this.id = other.id;
@@ -66,11 +80,11 @@ namespace Academy.Models
         public virtual string GetUpdateString()
         {
             return $"last_name=N'{last_name}'," +
-                $"last_name=N'{first_name}'," +
-                $"last_name=N'{middle_name}'," +
-                $"last_name=N'{birth_date}'," +
-                $"last_name=N'{email}'," +
-                $"last_name=N'{phone}'";
+                $"first_name=N'{first_name}'," +
+                $"middle_name=N'{middle_name}'," +
+                $"birth_date=N'{birth_date}'," +
+                $"email=N'{email}'," +
+                $"phone=N'{phone}'";
 
 
 
