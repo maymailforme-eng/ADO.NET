@@ -30,10 +30,10 @@ namespace Academy
         }
 
 
-        public StudentForm(
+        public StudentForm(int id,
             string lastName, string firstName, string middleName,
             string birth_date, string groupName) :
-            base(lastName, firstName, middleName, birth_date)
+            base(id, lastName, firstName, middleName, birth_date)
         {
 
             InitializeComponent();
@@ -71,7 +71,7 @@ namespace Academy
             {
                 // ОБНОВЛЕНИЕ
                 DataBase.Connector.Update(
-                    $"UPDATE Students SET {student.GetUpdateString()} WHERE id = {student.id}"
+                    $"UPDATE Students SET {student.GetUpdateString()} WHERE stud_id = {student.id}"
                 );
 
             }

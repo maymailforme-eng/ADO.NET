@@ -137,6 +137,7 @@ namespace Academy
 
             StudentForm student = new StudentForm
                 (
+                    Convert.ToInt32(row.Cells["stud_id"].Value),
                     row.Cells["last_name"].Value.ToString(),
                     row.Cells["first_name"].Value.ToString(),
                     row.Cells["middle_name"].Value.ToString(),

@@ -25,10 +25,12 @@ namespace Academy
 
 
         public HumanForm
-            (string lastName, string firstName, string middleName, 
+            (int id, string lastName, string firstName, string middleName, 
             string birth_date)
         {
             InitializeComponent();
+
+            labelID.Text = $"ID:{id}";
 
             //заполнение боксов
             textBoxLastName.Text = lastName;

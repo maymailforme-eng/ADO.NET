@@ -66,14 +66,11 @@ namespace Academy.Models
         public virtual string GetUpdateString()
         {
             return $"last_name=N'{last_name}'," +
-                $"last_name=N'{first_name}'," +
-                $"last_name=N'{middle_name}'," +
-                $"last_name=N'{birth_date}'," +
-                $"last_name=N'{email}'," +
-                $"last_name=N'{phone}'";
-
-
-
+                   $"first_name=N'{first_name}'," +
+                   $"middle_name=N'{middle_name}'," +
+                   $"birth_date=N'{birth_date}'," +
+                   $"email=N'{email}'," +
+                   $"phone=N'{phone}'";
         }
 
     }

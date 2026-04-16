@@ -174,8 +174,11 @@
             this.dgvStudents.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvStudents.Location = new System.Drawing.Point(0, 44);
             this.dgvStudents.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvStudents.MultiSelect = false;
             this.dgvStudents.Name = "dgvStudents";
+            this.dgvStudents.ReadOnly = true;
             this.dgvStudents.RowHeadersWidth = 62;
+            this.dgvStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStudents.Size = new System.Drawing.Size(1026, 448);
             this.dgvStudents.TabIndex = 1;
             this.dgvStudents.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellClick);
