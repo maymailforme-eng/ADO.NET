@@ -45,6 +45,7 @@
             this.dgvDisciplines = new System.Windows.Forms.DataGridView();
             this.tabPageTeachers = new System.Windows.Forms.TabPage();
             this.dgvTeachers = new System.Windows.Forms.DataGridView();
+            this.buttonAddTeacher = new System.Windows.Forms.Button();
             this.statusStrip.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPageStudents.SuspendLayout();
@@ -248,6 +249,7 @@
             // 
             // tabPageTeachers
             // 
+            this.tabPageTeachers.Controls.Add(this.buttonAddTeacher);
             this.tabPageTeachers.Controls.Add(this.dgvTeachers);
             this.tabPageTeachers.Location = new System.Drawing.Point(4, 29);
             this.tabPageTeachers.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -265,12 +267,27 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvTeachers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvTeachers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTeachers.Location = new System.Drawing.Point(0, 43);
+            this.dgvTeachers.Location = new System.Drawing.Point(0, 53);
             this.dgvTeachers.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvTeachers.MultiSelect = false;
             this.dgvTeachers.Name = "dgvTeachers";
+            this.dgvTeachers.ReadOnly = true;
             this.dgvTeachers.RowHeadersWidth = 62;
-            this.dgvTeachers.Size = new System.Drawing.Size(1026, 454);
+            this.dgvTeachers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTeachers.Size = new System.Drawing.Size(1026, 444);
             this.dgvTeachers.TabIndex = 2;
+            this.dgvTeachers.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTeachers_CellMouseDoubleClick);
+            // 
+            // buttonAddTeacher
+            // 
+            this.buttonAddTeacher.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonAddTeacher.Location = new System.Drawing.Point(868, 0);
+            this.buttonAddTeacher.Name = "buttonAddTeacher";
+            this.buttonAddTeacher.Size = new System.Drawing.Size(158, 45);
+            this.buttonAddTeacher.TabIndex = 3;
+            this.buttonAddTeacher.Text = "Добавить";
+            this.buttonAddTeacher.UseVisualStyleBackColor = true;
+            this.buttonAddTeacher.Click += new System.EventHandler(this.buttonAddTeacher_Click);
             // 
             // MainForm
             // 
@@ -319,5 +336,6 @@
         private System.Windows.Forms.ComboBox cbStudents;
         private System.Windows.Forms.ComboBox cbStudentDirection;
         private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonAddTeacher;
     }
 }

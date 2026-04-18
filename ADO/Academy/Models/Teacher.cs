@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Drawing;
 
 namespace Academy.Models
 {
@@ -14,7 +15,7 @@ namespace Academy.Models
 
 
         //конструктор класса
-        public Teacher(int id, string first_name, string last_name, string middle_name, string birth_date,
+        public Teacher(int id,  string last_name, string first_name, string middle_name, string birth_date,
             string email, string phone, Image photo, string work_since, decimal rate) :
             base(id, last_name, first_name, middle_name, birth_date, email, phone, photo)
         { 
@@ -37,7 +38,7 @@ namespace Academy.Models
 
         public override string GetNames()
         {
-            return base.GetNames() + ",work_sinec,rate";
+            return base.GetNames() + ",work_since,rate";
         }
 
         public override string GetValues()
@@ -48,8 +49,9 @@ namespace Academy.Models
 
         public override string GetUpdateString()
         {
-            return base.GetUpdateString() + $",work_since=N'{work_since}',{rate}";
+            return base.GetUpdateString() + $",work_since=N'{work_since}',rate={rate.ToString(CultureInfo.InvariantCulture)}";
+            //return base.GetUpdateString() + $",work_since=N'{work_since}',rate={rate}";
         }
-        
+
     }
 }

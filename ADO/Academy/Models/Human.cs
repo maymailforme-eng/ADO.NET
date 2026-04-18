@@ -26,7 +26,7 @@ namespace Academy.Models
         //конструкторы класса
         public Human
         (
-            int id, string first_name, string last_name, string middle_name, string birth_date,
+            int id, string last_name, string first_name, string middle_name, string birth_date,
             string email, string phone, Image photo
         )
         { 

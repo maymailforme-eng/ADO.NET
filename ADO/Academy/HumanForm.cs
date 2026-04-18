@@ -36,6 +36,8 @@ namespace Academy
         }
 
 
+
+
         protected virtual void Extract()
         {
             labelID.Text = $"ID:{human.id}";

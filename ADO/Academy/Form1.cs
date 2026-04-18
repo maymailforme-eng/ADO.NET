@@ -126,5 +126,29 @@ namespace Academy
             }
 
         }
+
+
+        //БЛОК - Teacher
+        //обработчик нажатия на кнопку добавить на вкладке учителя
+        private void buttonAddTeacher_Click(object sender, EventArgs e)
+        {
+            TeacherForm teacherForm = new TeacherForm();
+            if (teacherForm.ShowDialog() == DialogResult.OK)
+            {
+                tabControl_SelectedIndexChanged(tabControl, null);
+            }
+        }
+
+        //двойной клик по ячейке учителя
+        private void dgvTeachers_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int id = Convert.ToInt32(dgvStudents.Rows[e.RowIndex].Cells[0].Value);
+
+            TeacherForm teacherForm = new TeacherForm(id);
+            if (teacherForm.ShowDialog() == DialogResult.OK)
+            {
+                tabControl_SelectedIndexChanged(tabControl, null);
+            }
+        }
     }
 }

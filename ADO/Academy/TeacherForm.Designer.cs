@@ -1,6 +1,6 @@
 ﻿namespace Academy
 {
-    partial class Teacher
+    partial class TeacherForm
     {
         /// <summary>
         /// Required designer variable.
@@ -50,14 +50,14 @@
             this.rbRate.Size = new System.Drawing.Size(100, 44);
             this.rbRate.TabIndex = 19;
             // 
-            // Teacher
+            // TeacherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1180, 679);
             this.Controls.Add(this.rbRate);
             this.Controls.Add(this.dtpWorkSince);
-            this.Name = "Teacher";
+            this.Name = "TeacherForm";
             this.Text = "Teacher";
             this.Controls.SetChildIndex(this.dtpWorkSince, 0);
             this.Controls.SetChildIndex(this.rbRate, 0);
