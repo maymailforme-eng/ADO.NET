@@ -10,11 +10,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace Academy
 {
     public partial class MainForm : Form
     {
+
+
+
         Connector connector;
         DataGridView[] tables;
         Query[] queries =
@@ -37,6 +41,9 @@ namespace Academy
             };
         public MainForm()
         {
+            AllocConsole();
+            Console.WriteLine("Console attached");
+
             InitializeComponent();
 
             //список вкладок (таблицы)
@@ -63,6 +70,10 @@ namespace Academy
             cbStudentDirection.ValueMember = "direction_id";
 
         }
+
+
+        [DllImport("kernel32.dll")]
+        public static extern bool AllocConsole();
 
         //событие смена вкладки
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
