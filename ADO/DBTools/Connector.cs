@@ -206,14 +206,25 @@ AND CONSTRAINT_TYPE = N'PRIMARY KEY'
                     ms.Close();
                 }
 
-            
+
             }
             reader.Close();
 
             connection.Close();
 
             return photo;
-            
+
+            //Image photo = null;
+
+            //object data = Scalar($"SELECT {field} FROM {table} WHERE {GetPrimaryKeyColumnName(table)}={id} ");
+            //if (!Convert.IsDBNull(data))
+            //{
+            //    MemoryStream ms = new MemoryStream(data as byte[]);
+            //    photo = Image.FromStream(ms);
+            //    ms.Close();
+            //}
+            //return photo;
+
         }
 
 
